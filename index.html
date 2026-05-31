@@ -1,259 +1,115 @@
-You are editing the existing DHYAI website.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DHYAI</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Petrona:wght@400&family=Source+Sans+3:wght@400&display=swap" rel="stylesheet">
 
-DO NOT rewrite, shorten, reinterpret, polish, or “improve” the copy.
-Use the copy exactly as supplied by Swarna.
-Only fix obvious typos if explicitly listed.
-If copy seems grammatically unusual, preserve it.
-Do not add philosophy.
-Do not add AI luxury language.
+    <style>
+        /* ==================================================
+           GLOBAL COLOR & ATMOSPHERE SYSTEM
+           ================================================== */
+        :root {
+            /* Warm dark tones replacing pure black */
+            --bg-dark: #12100B;
+            --bg-mid: #16130D;
+            --bg-warm: #1A160F; 
+            
+            /* Beige/Ivory tones for previews */
+            --bg-beige: #C9B993;
+            --bg-beige-light: #D1C2A1;
+            
+            /* Typography Colors */
+            --text-ivory: #D8C7AA;
+            --text-muted: #BBAE96;
+            --accent-gold: #BE8233;
+            --text-dark: #12100B; /* For beige sections */
+            
+            /* Layout */
+            --nav-height: 80px;
+            --pad-desk: 72px;
+            --pad-mob: 32px;
+            --max-text: 680px;
+        }
 
-PRIMARY TASK:
-Fix the current website visually and structurally while preserving the exact approved structure and copy.
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-REFERENCE:
-Use the attached homepage reference image as the strongest visual direction.
-The homepage should move from dark atmospheric shadow into warm beige at the studies/objects preview and footer.
-The reference image has the correct mood, hierarchy, footer cleanliness, and preview-section direction.
+        html, body {
+            width: 100%;
+            background-color: var(--bg-dark);
+            color: var(--text-ivory);
+            font-family: 'Petrona', serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 1.35;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
-CRITICAL COPY RULE:
-Use Swarna’s supplied copy exactly for:
-Home
-Studio
-Material
-Studies
-Objects
-Commissions
-Enquiry
+        @media (min-width: 1024px) {
+            html, body { font-size: 20px; }
+        }
 
-Do not replace “Studio” with “Practice”.
-Do not re-add the removed Philosophy section as a blank broken page.
-Do not move enquiry content into commissions.
-Do not create inactive “contact information nav” text.
+        /* ==================================================
+           TYPOGRAPHY (Exact Rules)
+           ================================================== */
+        h1, h2, h3, h4, .heading-font {
+            font-family: 'Marcellus', serif;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            color: var(--text-ivory);
+        }
 
-GLOBAL TYPOGRAPHY:
-Use one consistent typography system across all pages.
+        /* Enforced sizing for section headings */
+        h2, h3 { 
+            font-size: 28px; 
+            margin-bottom: 1.5rem; 
+        }
+        
+        h3.accent { color: var(--accent-gold); }
 
-Navigation / small uppercase labels:
-Source Sans 3 Regular
-22px desktop where appropriate
-tracking 120
-uppercase only where already nav-like
+        .nav-label, nav a, .back-link {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 22px;
+            letter-spacing: 0.12em;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
 
-Subheadings / section titles:
-Marcellus Regular
-28px minimum for subheadings
-tracking 2
+        p {
+            max-width: var(--max-text);
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+        p:last-child { margin-bottom: 0; }
 
-Body:
-Petrona Regular
-18–20px desktop
-line-height 1.35
-Readable on desktop, not mobile-only tiny text.
+        a { color: inherit; text-decoration: none; transition: color 0.4s ease; cursor: pointer; }
+        a:hover { color: var(--accent-gold); }
 
-Desktop currently looks too small and randomly formatted. Fix this.
+        /* ==================================================
+           MULTI-PAGE ROUTING ARCHITECTURE (SPA)
+           ================================================== */
+        .page-view {
+            display: none; opacity: 0; width: 100%; min-height: 100vh;
+            animation: atmosphericFadeIn 1s forwards ease-in-out;
+        }
+        .page-view.active { display: block; }
 
-GLOBAL VISUAL RULES:
-1. Website is currently too dark. Increase image and page brightness by 15–25%.
-2. Background should remain warm dark, not pure black.
-3. Text must be readable without squinting.
-4. Images must belong to the same tonal family.
-5. Do not crop images randomly for convenience. The important subject of every image must remain visible.
-6. Use full image visibility where possible with object-fit: contain or carefully controlled object-position.
-7. Do not use bad bedcover images as homepage thumbnails.
-8. Homepage preview images must be the strongest hero images for each category.
-9. Studies and objects preview must follow the attached reference: warm beige section, larger thumbnails, clear hierarchy, clean footer.
-10. No generic two-column preview with no hierarchy.
-11. Each study/object page should have a back link to main Studies or Objects page.
-12. All pages must use the same typography system.
+        @keyframes atmosphericFadeIn {
+            0% { opacity: 0; transform: translateY(8px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
 
-HOME HERO:
-Remove miniature DHYAI logo from top-left nav.
-Hero should show DHYAI wordmark centered/primary on page.
-Below it:
-ध्यै
-To fix the mind upon
-
-The logo should be 10–15% more visually dominant than now:
-brighter,
-cleaner,
-more isolated,
-not larger in a crude way.
-
-The hero image must not overpower the wordmark.
-Adjust crop/overlay so DHYAI is primary and the jali shadow is atmosphere.
-
-NAVIGATION:
-Navigation is visually too loud.
-Reduce opacity slightly.
-Reduce contrast slightly.
-Increase spacing between items.
-Nav should be available but quiet.
-Keep: Home / Studio / Material / Studies / Objects / Commissions / Contact or Enquiry depending current structure, but make links functional.
-
-HOME STRUCTURE:
-Use exactly this content and structure:
-
-Hero:
-DHYAI
-ध्यै
-To fix the mind upon
-
-Opening lines:
-A stone from a riverbed sits on the shelf for years.
-Objects that settle into life slowly are,
-Time, embodied in material.
-Objects meant to live with.
-
-Principles:
-Object gravity
-A piece belongs without justification. It carries its own weight in a room.
-
-Objects through time
-The object moves across homes and decades without becoming obsolete.
-
-Object coherence
-Material, use, ageing, and repetition resolve into quiet certainty.
-
-Floating quotes section:
-Use atmospheric background image/images.
-Spread quotes across the image plane in different sizes.
-Do not place them in one vertical column.
-Do not create a blank void.
-
-Use these exact quotes:
-“There is an experience. Objects happen inside it.”
-Nothing seeks your attention.
-And then you notice something — not because it announced itself, but because it exists and you arrived at it.
-“Not minimal. Not maximal. Just deeply present.”
-“Memory residing in material.”
-“The object should feel like it belongs to time.”
-“Memory may or may not be touched, but something pulls you toward the object. You are drawn to touch it.”
-
-Preview section:
-Warm beige background like attached reference.
-Two groups:
-Studies Preview
-Sthāna
-Sthiti
-Punar
-
-Objects Preview
-Pebble Jār Set
-Kālāsh
-
-Each preview links to the dedicated page.
-Use best available hero images, not weak bedcover images.
-Make thumbnails larger and more composed like the attached reference.
-
-STUDIO PAGE:
-Title must be “The Studio”, not “The Practice”.
-Use Swarna’s exact Studio copy.
-Add process imagery below/alongside copy:
-Block printing
-Textile handling
-Label stitching
-Workshop imagery
-
-MATERIAL PAGE:
-Use exact Material copy.
-Do not rewrite textile or brass copy.
-Make Textile and Cast Brass sections visually balanced.
-Use image collage, not equal-size rigid blocks.
-
-STUDIES PAGE:
-Landing page should introduce Studies and link to:
-Sthāna
-Sthiti
-Punar
-
-Individual study pages must use exact copy.
-Each study page:
-Left side text.
-Right side irregular image stack/collage.
-1 atmosphere image
-1 detail image
-1 use image
-Do not crop important parts.
-Add “Back to Studies” link.
-
-OBJECTS PAGE:
-Separate landing page.
-Use exact Objects copy.
-Include:
-Pebble Jār Set
-Kālāsh
-
-Each object section/page:
-Left side text.
-Right side irregular image stack/collage.
-1 atmosphere image
-1 detail image
-1 use image
-Add “Back to Objects” link.
-Add three links/buttons to Enquiry where appropriate, but keep them quiet.
-
-COMMISSIONS:
-Fix broken page.
-Commissions page must show commissions content, not enquiry content.
-Use exact Commissions copy.
-Make page brighter than current.
-No missing text at bottom.
-No accidental overflow cutoff.
-
-ENQUIRY:
-Fix enquiry/contact confusion.
-Enquiry page must show:
-To begin a conversation.
-Write to the studio.
-
-Dhyai Studio
-Devanahalli, Bengaluru
-
-contact@dhyai.studio
-WhatsApp +91 83685 44393
-
-dhyai.studio
-
-Use one atmospheric image.
-Form may remain, but contact details must be readable.
-Do not create inactive contact-information nav text.
-
-IMAGE INTERACTION:
-Add subtle image interaction only.
-On hover/touch:
-one image may come into focus,
-nearby stacked images may fade slightly,
-selected image may lift/scale 1.02–1.04.
-No drama.
-No spinning.
-No aggressive animation.
-No cinematic gimmick.
-Transition duration: 500–800ms.
-Easing: ease-out.
-Must remain elegant and calm.
-
-COLLAGE RULE:
-Images on inner pages should be arranged like an irregular sized collage system.
-Not all images same aspect ratio.
-Not all images same size.
-But still disciplined, aligned, and readable.
-
-FINAL CHECK:
-Before output, verify:
-1. Copy has not been rewritten.
-2. Studio is not called Practice.
-3. Commissions page is not showing Enquiry.
-4. Enquiry page contact details are correct.
-5. No blank philosophy page.
-6. Typography is consistent across all pages.
-7. Desktop text is readable.
-8. Site is brighter than current.
-9. Homepage resembles attached reference.
-10. Preview thumbnails are strong hero images.
-11. All nav links work.
-12. Each Study/Object page has back link.
-13. Images are not randomly cropped.
-14. No tiny top-left DHYAI logo in hero.
-15. DHYAI wordmark is primary in hero.
-
-Return the full corrected HTML/CSS only.
+        /* ==================================================
+           NAVIGATION (Simple Nav Only, No Logo)
+           ================================================== */
+        header {
+            position: fixed; top: 0; left: 0; width:
